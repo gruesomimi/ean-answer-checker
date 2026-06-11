@@ -2,41 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>EAN Answer Beach 🌊</title>
+  <title>EAN Answer Beach 🌊🎣</title>
   <link rel="stylesheet" href="answer-style.css">
 </head>
 
 <body>
 
-  <!-- SKY -->
+  <!-- BACKGROUND LAYERS -->
   <div class="sky"></div>
-
-  <!-- CLOUDS -->
-  <div class="cloud c1"></div>
-  <div class="cloud c2"></div>
-  <div class="cloud c3"></div>
-
-  <!-- SEA -->
   <div class="sea"></div>
-
-  <!-- SAND -->
   <div class="sand"></div>
 
   <!-- FLOATING OBJECTS -->
-  <div class="float f1">🎣</div>
-  <div class="float f2">🐟</div>
-  <div class="float f3">🐠</div>
-  <div class="float f4">🪸</div>
+  <div class="float" style="top:20%; left:0;">🎣</div>
+  <div class="float" style="top:35%; left:0;">🐟</div>
+  <div class="float" style="top:55%; left:0;">🐠</div>
+  <div class="float" style="top:75%; left:0;">🪸</div>
 
-  <!-- CENTER UI -->
+  <!-- MAIN UI -->
   <div class="container">
     <h1>🌴 EAN Answer Beach 🌊</h1>
 
     <input type="number" id="aNumber" placeholder="Enter question number (1–20)">
-    <button onclick="showAnswer()">Reveal Answer 🎣</button>
+    <button id="btn">Reveal Answer 🎣</button>
 
     <div id="answerBox">
-      <p id="answerText">🌊 Drop a number into the ocean...</p>
+      <p id="answerText">🌊 Drop a number into the sea...</p>
     </div>
   </div>
 
