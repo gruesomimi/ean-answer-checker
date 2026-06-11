@@ -2,31 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>EAN Answer Sea 🌊📘</title>
+  <title>EAN Answer Beach 🌊</title>
   <link rel="stylesheet" href="answer-style.css">
 </head>
 
 <body>
 
-  <div class="container">
+  <!-- SKY -->
+  <div class="sky"></div>
 
+  <!-- CLOUDS -->
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="cloud c3"></div>
+
+  <!-- SEA -->
+  <div class="sea"></div>
+
+  <!-- SAND -->
+  <div class="sand"></div>
+
+  <!-- FLOATING OBJECTS -->
+  <div class="float f1">🎣</div>
+  <div class="float f2">🐟</div>
+  <div class="float f3">🐠</div>
+  <div class="float f4">🪸</div>
+
+  <!-- CENTER UI -->
+  <div class="container">
     <h1>🌴 EAN Answer Beach 🌊</h1>
 
     <input type="number" id="aNumber" placeholder="Enter question number (1–20)">
-    <br>
     <button onclick="showAnswer()">Reveal Answer 🎣</button>
 
     <div id="answerBox">
-      <p id="answerText">🐠 Enter a number to dive for answers...</p>
+      <p id="answerText">🌊 Drop a number into the ocean...</p>
     </div>
-
   </div>
-
-  <!-- floating aesthetic elements -->
-  <div class="floating" style="top:10%; left:0;">🎣</div>
-  <div class="floating" style="top:30%; left:0;">🐟</div>
-  <div class="floating" style="top:60%; left:0;">🐠</div>
-  <div class="floating" style="top:80%; left:0;">🪸</div>
 
   <script src="answer.js"></script>
 </body>
