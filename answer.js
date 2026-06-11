@@ -26,14 +26,9 @@ function showAnswer() {
   const display = document.getElementById("answerText");
 
   if (!answers[num]) {
-    display.innerText = "❌ Enter number 1–20!";
+    display.innerText = "❌ Enter 1–20!";
     return;
   }
-
-  // pop animation reset
-  display.style.animation = "none";
-  void display.offsetWidth;
-  display.style.animation = "pop 0.3s ease-in-out";
 
   display.innerText = answers[num];
 }
