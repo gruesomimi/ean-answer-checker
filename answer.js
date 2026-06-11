@@ -32,3 +32,22 @@ function showAnswer() {
 
   display.innerText = answers[num];
 }
+// 🌊 ripple effect for button clicks
+const btn = document.querySelector("button");
+
+btn.addEventListener("click", function (e) {
+  const circle = document.createElement("span");
+  circle.classList.add("ripple");
+
+  const diameter = Math.max(btn.clientWidth, btn.clientHeight);
+  const radius = diameter / 2;
+
+  circle.style.width = circle.style.height = `${diameter}px`;
+  circle.style.left = `${e.clientX - btn.offsetLeft - radius}px`;
+  circle.style.top = `${e.clientY - btn.offsetTop - radius}px`;
+
+  const ripple = btn.getElementsByClassName("ripple")[0];
+  if (ripple) ripple.remove();
+
+  btn.appendChild(circle);
+});
