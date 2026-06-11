@@ -21,33 +21,37 @@ const answers = {
 20: "20. B = NO"
 };
 
-function showAnswer() {
+const btn = document.getElementById("btn");
+
+btn.addEventListener("click", function (e) {
   const num = document.getElementById("aNumber").value;
   const display = document.getElementById("answerText");
 
   if (!answers[num]) {
-    display.innerText = "❌ Enter 1–20!";
+    display.innerText = "❌ Enter number 1–20!";
     return;
   }
 
   display.innerText = answers[num];
-}
-// 🌊 ripple effect for button clicks
-const btn = document.querySelector("button");
 
-btn.addEventListener("click", function (e) {
+  // 🌊 ripple effect
   const circle = document.createElement("span");
   circle.classList.add("ripple");
 
   const diameter = Math.max(btn.clientWidth, btn.clientHeight);
-  const radius = diameter / 2;
 
   circle.style.width = circle.style.height = `${diameter}px`;
-  circle.style.left = `${e.clientX - btn.offsetLeft - radius}px`;
-  circle.style.top = `${e.clientY - btn.offsetTop - radius}px`;
+  circle.style.left = `${e.offsetX}px`;
+  circle.style.top = `${e.offsetY}px`;
 
   const ripple = btn.getElementsByClassName("ripple")[0];
   if (ripple) ripple.remove();
 
   btn.appendChild(circle);
+
+  // 🎣 mini cast effect
+  btn.style.transform = "translateY(3px)";
+  setTimeout(() => {
+    btn.style.transform = "translateY(0px)";
+  }, 150);
 });
