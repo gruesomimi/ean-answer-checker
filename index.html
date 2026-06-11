@@ -8,16 +8,25 @@
 
 <body>
 
-  <h1>📘 EAN Answer Sea 🌊</h1>
+  <div class="container">
 
-  <div class="input-box">
+    <h1>🌴 EAN Answer Beach 🌊</h1>
+
     <input type="number" id="aNumber" placeholder="Enter question number (1–20)">
+    <br>
     <button onclick="showAnswer()">Reveal Answer 🎣</button>
+
+    <div id="answerBox">
+      <p id="answerText">🐠 Enter a number to dive for answers...</p>
+    </div>
+
   </div>
 
-  <div id="answerBox">
-    <p id="answerText">🐠 Enter a number to dive for answers...</p>
-  </div>
+  <!-- floating aesthetic elements -->
+  <div class="floating" style="top:10%; left:0;">🎣</div>
+  <div class="floating" style="top:30%; left:0;">🐟</div>
+  <div class="floating" style="top:60%; left:0;">🐠</div>
+  <div class="floating" style="top:80%; left:0;">🪸</div>
 
   <script src="answer.js"></script>
 </body>
