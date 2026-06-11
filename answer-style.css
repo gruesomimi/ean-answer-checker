@@ -9,116 +9,149 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* SKY */
+/* 🌅 ANIMATED PINK-PURPLE SKY */
 .sky {
   position: absolute;
   width: 100%;
-  height: 40%;
-  background: linear-gradient(to bottom, #7ec8ff, #cfefff);
+  height: 45%;
+  background: linear-gradient(-45deg, #ff4fd8, #7a5cff, #ff7ad9, #6ecbff);
+  background-size: 400% 400%;
+  animation: skyMove 10s ease infinite;
 }
 
-/* SEA */
+@keyframes skyMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ☁️ soft glow */
+.sky::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.3), transparent 60%);
+}
+
+/* 🌊 SEA */
 .sea {
   position: absolute;
-  top: 40%;
+  top: 45%;
   width: 100%;
   height: 35%;
-  background: linear-gradient(to bottom, #2aa7ff, #0077be);
+  background: linear-gradient(to bottom, #1b7fd6, #005b99);
+  overflow: hidden;
 }
 
-/* SAND */
+.sea::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  background: rgba(255,255,255,0.12);
+  top: -20px;
+  left: -50%;
+  border-radius: 50%;
+  animation: wave 6s linear infinite;
+}
+
+@keyframes wave {
+  from { transform: translateX(0); }
+  to { transform: translateX(50%); }
+}
+
+/* 🏖️ SAND */
 .sand {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 25%;
-  background: linear-gradient(to top, #f2d16b, #f7e3a1);
+  height: 20%;
+  background: linear-gradient(to top, #f6d365, #fda085);
 }
 
-/* FLOATING OBJECTS */
+/* 🎣 FLOATING ITEMS */
 .float {
   position: absolute;
   font-size: 2rem;
-  animation: drift 12s linear infinite;
-  opacity: 0.8;
+  animation: drift 14s linear infinite;
+  opacity: 0.85;
 }
 
 @keyframes drift {
-  from { transform: translateX(-100px) rotate(0deg); }
+  from { transform: translateX(-120px) rotate(0deg); }
   to { transform: translateX(120vw) rotate(360deg); }
 }
 
-/* CENTER GAME CARD */
+/* 🎮 CENTER UI */
 .container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 520px;
-  padding: 35px;
+  width: 540px;
+  padding: 40px;
 
-  background: rgba(255,255,255,0.22);
-  backdrop-filter: blur(14px);
-  border-radius: 25px;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(16px);
 
+  border-radius: 28px;
   text-align: center;
-  color: white;
 
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  color: white;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.35);
 }
 
-/* TITLE */
 h1 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-size: 2.1rem;
+  margin-bottom: 18px;
 }
 
 /* INPUT */
 input {
-  width: 90%;
-  padding: 15px;
+  width: 92%;
+  padding: 16px;
   font-size: 1.1rem;
 
   border: none;
-  border-radius: 15px;
+  border-radius: 16px;
   outline: none;
 }
 
-/* 🎣 MAIN GAME BUTTON */
+/* 🎣 BUTTON */
 button {
-  margin-top: 15px;
-  padding: 16px 28px;
+  margin-top: 18px;
+  padding: 16px 30px;
 
   font-size: 1.2rem;
   font-weight: bold;
 
   border: none;
-  border-radius: 18px;
+  border-radius: 20px;
 
-  background: #ffd166;
+  background: linear-gradient(135deg, #ffe29f, #ffa99f);
   cursor: pointer;
 
   position: relative;
   overflow: hidden;
 
-  box-shadow: 0 8px 0 #c99b2c;
+  box-shadow: 0 10px 0 #c98b6b;
   transition: all 0.2s ease;
 }
 
-/* PRESS EFFECT */
 button:active {
-  transform: translateY(4px);
-  box-shadow: 0 4px 0 #c99b2c;
+  transform: translateY(5px);
+  box-shadow: 0 5px 0 #c98b6b;
 }
 
-/* 🌊 RIPPLE EFFECT */
-button span.ripple {
+/* 🌊 ripple */
+.ripple {
   position: absolute;
   border-radius: 50%;
   transform: scale(0);
   animation: ripple 600ms linear;
-  background-color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.6);
 }
 
 @keyframes ripple {
@@ -128,9 +161,15 @@ button span.ripple {
   }
 }
 
-/* ANSWER BOX */
+/* ANSWER */
 #answerBox {
   margin-top: 20px;
   font-size: 1.5rem;
   font-weight: bold;
+  animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
