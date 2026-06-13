@@ -1,40 +1,67 @@
-const answers = {
-1: "1. B = 36",
-2: "2. A = YES (EAN = 36)",
-3: "3. C = 36",
-4: "4. A = YES",
-5: "5. B = 36",
-6: "6. A = YES",
-7: "7. B = 30",
-8: "8. B = NO",
-9: "9. B = 35",
-10: "10. B = NO",
-11: "11. C = 38",
-12: "12. C = SOMETIMES",
-13: "13. C = 36",
-14: "14. B = NO",
-15: "15. C = 38",
-16: "16. B = NO",
-17: "17. C = 36",
-18: "18. B = NO",
-19: "19. C = 38",
-20: "20. B = NO"
+const metals = {
+  Fe: 26,
+  Cu: 29,
+  Co: 27,
+  Zn: 30,
+  Ni: 28,
+  Pt: 78,
+  Pd: 46,
+  Ag: 47
 };
 
-const btn = document.getElementById("btn");
+// ligand electron values based on YOUR question set
+function getLigandElectrons(qNum) {
+  qNum = parseInt(qNum);
 
-btn.addEventListener("click", function (e) {
-  const num = document.getElementById("aNumber").value;
+  if ([1,2,15,16,19,20,7,8].includes(qNum)) return 12; // NH3 (6 ligands × 2e)
+  if ([3,4,9,10,13,14,17,18].includes(qNum)) return 12; // CN (6 ligands × 2e)
+  if ([5,6,11,12].includes(qNum)) return 8; // CO (4 ligands × 2e)
+
+  return 0;
+}
+
+// oxidation states based on your complexes
+function getOxidationState(qNum) {
+  qNum = parseInt(qNum);
+
+  if ([1,2,15,16,19,20].includes(qNum)) return 3;   // +3 complexes
+  if ([7,8].includes(qNum)) return 2;               // +2 complexes
+  if ([3,4,9,10,13,14,17,18].includes(qNum)) return -4; // anionic complexes
+  if ([5,6,11,12].includes(qNum)) return 0;         // neutral CO complexes
+
+  return 0;
+}
+
+// 🔥 NEW BUTTON LOGIC
+document.getElementById("btn").addEventListener("click", function (e) {
+
+  const qNum = document.getElementById("aNumber").value;
   const display = document.getElementById("answerText");
 
-  if (!answers[num]) {
-    display.innerText = "❌ Enter number 1–20!";
+  // 🎣 YOU NEED THIS NEW DROPDOWN IN HTML
+  const metal = document.getElementById("metal")?.value;
+
+  if (!qNum || !metal) {
+    display.innerText = "❌ Enter question number AND select metal!";
     return;
   }
 
-  display.innerText = answers[num];
+  const Z = metals[metal];
+  const OS = getOxidationState(qNum);
+  const LE = getLigandElectrons(qNum);
 
-  // 🌊 ripple effect
+  const EAN = Z - OS + LE;
+
+  display.innerHTML = `
+    🌊 <b>Complex:</b> [${metal} complex] <br><br>
+
+    🧪 EAN = Z - oxidation state + ligand electrons <br>
+    🧪 EAN = ${Z} - (${OS}) + (${LE}) <br><br>
+
+    🎣 <b>Final Answer = ${EAN}</b>
+  `;
+
+  // ripple effect (KEEP YOUR ORIGINAL)
   const circle = document.createElement("span");
   circle.classList.add("ripple");
 
@@ -49,9 +76,9 @@ btn.addEventListener("click", function (e) {
 
   btn.appendChild(circle);
 
-  // 🎣 mini cast effect
   btn.style.transform = "translateY(3px)";
   setTimeout(() => {
     btn.style.transform = "translateY(0px)";
   }, 150);
+
 });
